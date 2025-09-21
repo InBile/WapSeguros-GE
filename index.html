@@ -11,15 +11,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f7f9fc; --card: #FFFFFF; --ink: #111827; --muted: #6b7280;
-      --brand: #007bff; --brand-light: #e6f2ff; --dark: #131921;
-      --ring: 0 4px 12px rgba(0, 0, 0, 0.05); --container: 1100px;
+      --bg: #f7f9fc;
+      --card: #FFFFFF;
+      --ink: #111827;
+      --muted: #6b7280;
+      --brand: #007bff;
+      --brand-light: #e6f2ff;
+      --dark: #131921;
+      --ring: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --container: 1100px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0; font-family: 'Inter', sans-serif; background: var(--bg);
-      color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
@@ -32,69 +42,122 @@
     .btn.ghost { background: transparent; border: 1px solid #e2e8f0; color: var(--ink); box-shadow: none; }
     .btn.ghost:hover { background: #f1f5f9; }
     .btn:hover { background: #0056b3; transform: translateY(-1px); }
-    .btn:disabled { background: #a0c7ff; cursor: not-allowed; }
 
-    /* ===== Estructura Principal ===== */
+    /* ===== NAV ===== */
     .header { background: var(--card); color: var(--ink); padding: 16px 18px; position: sticky; top: 0; z-index: 100; box-shadow: var(--ring); border-bottom: 1px solid #e2e8f0; }
-    .header-content { display: flex; align-items: center; gap: 16px; max-width: 1100px; margin: 0 auto; }
+    .header-content { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
     .brand { font-weight: 800; font-size: 22px; }
     .brand span { color: var(--brand); }
     .nav__spacer { flex: 1; }
     .nav__links { display: flex; gap: 8px; }
     .nav__links a { padding: 8px 16px; border-radius: 6px; font-weight: 500; transition: color 0.2s; }
     .nav__links a:hover { color: var(--brand); }
-    
-    /* ===== Sub-Navegación ===== */
-    .sub-nav { background: #fff; padding: 12px 18px; border-bottom: 1px solid #e2e8f0; }
-    .sub-nav-content { display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; }
-    .sub-nav-content .btn { background: var(--brand-light); color: var(--brand); box-shadow: none; }
-    .sub-nav-content .btn:hover { background: #d0e7ff; }
+    .nav__cta { display: flex; gap: 10px; }
 
-    /* ===== Hero ===== */
+    /* ===== HERO ===== */
     .hero { text-align: center; padding: 80px 0; }
     .hero__title { font-size: clamp(40px, 6vw, 68px); font-weight: 800; letter-spacing: -2px; margin: 0 0 12px; }
     .hero__title span { color: var(--brand); }
     .hero__subtitle { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); margin: 0 0 30px; max-width: 700px; line-height: 1.7; }
+    .hero__cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
-    /* ===== Slider Panorámico ===== */
-    .panoramic-slider { position: relative; width: 100%; overflow: hidden; background: var(--dark); }
-    .slider-track { display: flex; transition: transform 0.5s ease-in-out; }
-    .slide { min-width: 100%; box-sizing: border-box; }
-    .slide img { width: 100%; height: 60vh; object-fit: cover; opacity: 0.7; }
-    .slider-btn {
-        position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.2);
-        color: white; border: 1px solid white; padding: 0; cursor: pointer; border-radius: 50%;
-        z-index: 10; font-size: 24px; width: 50px; height: 50px;
-        display: flex; align-items: center; justify-content: center;
+    /* ===== SLIDER PANORÁMICO ===== */
+    .panoramic-slider {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
     }
-    .slider-btn:hover { background: rgba(255, 255, 255, 0.4); }
-    .prev { left: 20px; }
-    .next { right: 20px; }
+    .slider-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+    .slide {
+        min-width: 100%;
+        box-sizing: border-box;
+    }
+    .slide img {
+        width: 100%;
+        height: 50vh;
+        object-fit: cover;
+    }
+    .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.4);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 10;
+        font-size: 24px;
+        width: 50px;
+        height: 50px;
+    }
+    .slider-btn:hover { background-color: rgba(0, 0, 0, 0.7); }
+    .prev { left: 15px; }
+    .next { right: 15px; }
 
-    /* ===== Secciones Generales ===== */
+    /* ===== SECCIONES ===== */
     section { padding: 80px 0; }
     .section__head { margin: 0 0 50px; text-align: center; }
     .section__kicker { color: var(--brand); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: .8rem; }
     .section__title { font-size: clamp(28px, 4vw, 42px); margin: 6px 0 10px; letter-spacing: -0.5px; }
     .section__lead { color: var(--muted); font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
 
-    /* ===== Ventajas y Cómo Funciona ===== */
+    /* ===== FEATURES & TIPOS DE SEGURO GRID ===== */
     .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .card { background: var(--card); border: 1px solid #E2E8F0; border-radius: 8px; padding: 24px; text-align: center; }
-    .card h4 { margin: 16px 0 6px; font-size: 1.2rem; font-weight: 600; }
-    .card p { color: var(--muted); margin: 0; font-size: 0.95rem; }
-    .card svg { width: 48px; height: 48px; color: var(--brand); margin: 0 auto; }
-    .how-it-works-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center; }
-    .step .step-number {
-      background: var(--brand-light); color: var(--brand); font-weight: 700;
-      width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center;
-      margin: 0 auto 20px; font-size: 1.2rem;
+    .card {
+      background: var(--card); border: 1px solid #E2E8F0; border-radius: 8px; padding: 24px;
+      box-shadow: var(--ring); display: flex; flex-direction: column; align-items: center; text-align: center;
     }
-    .step h5 { font-size: 1.2rem; margin: 0 0 8px; }
-    .step p { color: var(--muted); }
+    .card h4 { margin: 16px 0 6px; font-size: 1.2rem; font-weight: 600; }
+    .card p { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; }
+    .card svg { width: 48px; height: 48px; color: var(--brand); }
+    #tipos-seguro .card { cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+    #tipos-seguro .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 123, 255, 0.1); }
 
-    /* ===== Precios ===== */
+    /* ===== FORMULARIO DE CONTRATACIÓN ===== */
+    #formulario-contratacion { background: var(--card); border-top: 1px solid #e2e8f0; }
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: var(--bg);
+        padding: 30px;
+        border-radius: 8px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+    .form-group input, .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 1rem;
+    }
+    .form-group input[readonly] { background: #e9ecef; cursor: not-allowed; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    
+    /* Demás estilos de secciones (ventajas, precios, faq, cta, footer, modal) se mantienen igual que en la versión anterior */
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; }
+    .list { display: grid; gap: 20px; list-style: none; padding: 0;}
+    .list li { display: flex; gap: 16px; align-items: flex-start; font-size: 1.1rem; }
+    .list li svg { min-width: 24px; height: 24px; color: var(--brand); margin-top: 4px; }
+    .card-promo { background: var(--dark); color: #fff; border-radius: 12px; padding: 30px; text-align: center; }
+    .card-promo h4 { margin: 0 0 10px; font-size: 1.5rem; }
+    .card-promo p { opacity: .9; margin-bottom: 20px; }
+    .pricing-toggle { text-align: center; margin-bottom: 40px; }
+    .pricing-toggle button { background: #e2e8f0; color: var(--muted); border: none; padding: 10px 20px; border-radius: 99px; cursor: pointer; font-weight: 600; }
+    .pricing-toggle button.active { background: var(--brand); color: #fff; }
     .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .price-plan { display: none; }
+    .price-plan.active { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;}
     .price { background: var(--card); border: 1px solid #E2E8F0; border-radius: 12px; padding: 30px; display: flex; flex-direction: column; text-align: center; }
     .price--pro { border-color: var(--brand); box-shadow: 0 10px 30px rgba(0, 123, 255, 0.15); }
     .price h4 { margin: 0 0 8px; font-size: 1.4rem; font-weight: 600; }
@@ -102,9 +165,17 @@
     .price__tag { font-size: 38px; font-weight: 700; margin-bottom: 8px; }
     .price__tag small { font-size: 1rem; color: var(--muted); font-weight: 500; }
     .price__note { font-size: 0.9rem; color: var(--muted); min-height: 40px; }
-    .price__cta { margin-top: 24px; }
-    
-    /* ===== CTA Final & Footer ===== */
+    .price__features { list-style: none; padding: 0; margin: 20px 0; text-align: left; }
+    .price__features li { color: var(--muted); margin-bottom: 12px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+    .price__features li svg { min-width: 18px; color: var(--brand); }
+    .price__cta { margin-top: auto; }
+    .faq { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .faq .q { background: var(--card); border-radius: 8px; padding: 20px; cursor: pointer; }
+    .faq .q h5 { margin: 0; font-size: 1.1rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+    .faq .q p { color: var(--muted); margin: 10px 0 0; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, margin-top 0.35s ease; }
+    .faq .q.open p { max-height: 180px; }
+    .faq .q .arrow { transition: transform 0.3s ease; }
+    .faq .q.open .arrow { transform: rotate(90deg); }
     .cta { background: var(--dark); color: #fff; border-radius: 12px; padding: 50px; text-align: center; }
     .cta h2 { font-size: clamp(24px, 3.4vw, 36px); font-weight: 700; margin: 0 0 8px; }
     .cta p { opacity: .9; margin: 0 0 24px; max-width: 600px; margin-left: auto; margin-right: auto;}
@@ -113,50 +184,13 @@
     .footer-links a { color: #E5E7EB; text-decoration: none; font-weight: 500; transition: color 0.2s; }
     .footer-links a:hover { color: var(--brand); }
     .footer p { color: var(--muted); margin: 0; }
-
-    /* ===== Estilos para Modales ===== */
-    .modal {
-      position: fixed; inset: 0; background: rgba(17, 24, 39, 0.6); display: none;
-      align-items: center; justify-content: center; padding: 1rem; z-index: 1000;
-      backdrop-filter: blur(5px); opacity: 0; transition: opacity 0.3s ease;
-    }
-    .modal.active { display: flex; opacity: 1; }
-    .modal-content {
-      background: var(--card); width: 100%; max-width: 600px; border-radius: 12px;
-      box-shadow: 0 18px 50px rgba(17, 24, 39, 0.2); max-height: 90vh;
-      display: flex; flex-direction: column;
-      transform: scale(0.95); transition: transform 0.3s ease;
-    }
-    .modal.active .modal-content { transform: scale(1); }
-    .modal-header { padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
-    .modal-header h3 { margin: 0; font-size: 1.5rem; }
-    .modal-close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--muted); line-height: 1; }
-    .modal-body { padding: 20px; overflow-y: auto; }
-    .form-step { display: none; }
-    .form-step.active-step { display: block; }
-    .step-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
-    
-    .plan-options { display: grid; gap: 15px; }
-    .plan-option {
-        padding: 15px; border: 1px solid #e2e8f0; border-radius: 8px;
-        cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .plan-option:hover { border-color: var(--brand); }
-    .plan-option input { display: none; }
-    .plan-option input:checked + .plan-details { border-color: var(--brand); box-shadow: 0 0 0 2px var(--brand); }
-    .plan-details { display: flex; flex-direction: column; }
-    .plan-details strong { font-size: 1.1rem; }
-    .plan-details small { color: var(--muted); }
-
-    /* ===== Media Queries ===== */
-    @media (max-width: 900px) { .features, .pricing { grid-template-columns: 1fr; } }
-    @media (max-width: 680px) {
-      .header-content { justify-content: space-between; }
-      .nav__links { display: none; }
-      .hero { padding: 60px 0; }
-      .slide img { height: 40vh; }
-      .slider-btn { width: 40px; height: 40px; font-size: 18px; }
-    }
+    .modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); display: none; align-items: center; justify-content: center; padding: 1rem; z-index: 99999; backdrop-filter: blur(4px); }
+    .dialog { background: var(--card); width: 100%; max-width: 600px; border-radius: 8px; box-shadow: 0 18px 50px rgba(17, 24, 39, 0.12); padding: 2rem; max-height: 80vh; overflow-y: auto; }
+    .dialog h3 { margin-top: 0; }
+    .dialog p, .dialog li { color: var(--muted); font-size: 0.95rem; }
+    .dialog .close-btn { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--muted); }
+    @media (max-width: 900px) { .features, .pricing, .faq { grid-template-columns: 1fr; } .price-plan.active { grid-template-columns: 1fr; } }
+    @media (max-width: 680px) { .header-content { justify-content: space-between; } .nav__links { display: none; } .hero { padding: 60px 0; } }
 
   </style>
 </head>
@@ -172,26 +206,25 @@
         <a href="#faq">FAQ</a>
       </nav>
       <div class="nav__spacer"></div>
-      <a class="btn" href="https://wa.me/240555558213?text=Hola,%20me%20gustaría%20saber%20más%20sobre%20sus%20seguros." target="_blank">Contactar</a>
+      <div class="nav__cta">
+        <a class="btn" href="https://wa.me/240555558213?text=Hola,%20me%20gustaría%20contratar%20un%20seguro." target="_blank">Contratar ahora</a>
+      </div>
     </div>
   </header>
 
-  <nav class="sub-nav">
-    <div class="sub-nav-content">
-        <button class="btn" data-modal-target="modal-personal">Hacer Seguro Personal</button>
-        <button class="btn" data-modal-target="modal-empresa">Solicitar Seguro para Empresas</button>
-    </div>
-  </nav>
-
   <main>
-    <header class="hero">
+    <section class="hero">
       <div class="container hero__wrap">
-        <h1 class="hero__title">La protección definitiva para tu <span>tecnología</span>.</h1>
+        <h1 class="hero__title">Protege. Trabaja. <span>Disfruta.</span></h1>
         <p class="hero__subtitle">
-          Asegura tus dispositivos electrónicos contra todo riesgo. Cobertura completa, gestión fácil y soporte al instante. Tu tranquilidad es nuestro compromiso.
+          La tranquilidad que necesitas para tus dispositivos. Cobertura completa, gestión fácil y soporte al instante. Tu tecnología, siempre segura.
         </p>
+        <div class="hero__cta">
+          <a class="btn" href="#pricing">Ver Planes</a>
+          <a class="btn ghost" href="#formulario-contratacion" data-seguro="Empresas" class="seguro-selector">Seguro para Empresas</a>
+        </div>
       </div>
-    </header>
+    </section>
 
     <div class="panoramic-slider">
       <div class="slider-track">
@@ -203,117 +236,222 @@
       <button class="slider-btn next">❯</button>
     </div>
 
-    <section id="benefits">
-        <div class="container">
-          <div class="section__head">
-            <div class="section__kicker">Ventajas Clave</div>
-            <h2 class="section__title">Más que un seguro, una garantía de tranquilidad</h2>
-            <p class="section__lead">Nuestros planes están pensados para que un accidente no detenga tu día. Cubrimos la mayor parte de los costes y te damos beneficios extra.</p>
-          </div>
-          <div class="features">
-            <div class="card">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-              <h4>Cobertura Amplia</h4>
-              <p>Protección contra robos, caídas, líquidos y fallos técnicos. Cubrimos hasta el 95% de los costes de reparación.</p>
-            </div>
-            <div class="card">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-              <h4>Tarjeta WapSeguros</h4>
-              <p>Los miembros anuales reciben una tarjeta exclusiva con prioridad en reparaciones y descuentos adicionales.</p>
-            </div>
-            <div class="card">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5 2.31V8c0 1.92-2.18 3.63-5 4.31-2.82-.68-5-2.39-5-4.31V4.99l5-2.3z"></path><path d="M12 22v-6.5"></path><path d="M20 12.5a8 8 0 1 0-16 0"></path></svg>
-              <h4>Proceso Sencillo y Rápido</h4>
-              <p>Gestiona todo desde WhatsApp. Sin papeleos complicados ni largas esperas para tener una solución.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    <section id="pricing" style="background:var(--card); border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
-        <div class="container">
-          <div class="section__head">
-            <div class="section__kicker">Nuestros Seguros</div>
-            <h2 class="section__title">Un plan para cada necesidad</h2>
-            <p class="section__lead">Soluciones flexibles para ti y para tu negocio. Contrata ahora y asegura lo que más te importa.</p>
-          </div>
-          <div class="pricing">
-            <div class="price">
-              <span class="chip">Esencial</span>
-              <h4>Plan Personal</h4>
-              <div class="price__tag">desde 5.000 <small>XAF/mes</small></div>
-              <p class="price__note">El primer mes por solo <strong>1.000 XAF</strong></p>
-              <div class="price__cta"><button class="btn ghost" data-modal-target="modal-personal">Ver Planes</button></div>
-            </div>
-            <div class="price price--pro">
-              <span class="chip">Negocios</span>
-              <h4>Plan Empresa</h4>
-              <div class="price__tag">desde 25.000 <small>XAF/mes</small></div>
-              <p class="price__note">Protección integral para todos los equipos de tu negocio.</p>
-              <div class="price__cta"><button class="btn" data-modal-target="modal-empresa">Solicitar Cotización</button></div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-    <section id="how-it-works">
+    <section id="tipos-seguro">
         <div class="container">
             <div class="section__head">
-                <div class="section__kicker">Cómo Funciona</div>
-                <h2 class="section__title">Protegido en 3 simples pasos</h2>
+                <div class="section__kicker">Nuestras Coberturas</div>
+                <h2 class="section__title">Elige qué quieres proteger</h2>
+                <p class="section__lead">Selecciona el tipo de seguro que necesitas y rellena tus datos para empezar a disfrutar de la máxima tranquilidad.</p>
             </div>
-            <div class="how-it-works-grid">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h5>Elige tu Plan</h5>
-                    <p>Selecciona la cobertura que mejor se adapta a tus necesidades, ya sea para ti o para tu empresa.</p>
+            <div class="features">
+                <div class="card seguro-selector" data-seguro="Smartphones">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    <h4>Seguro para Smartphones</h4>
+                    <p>Protección total contra robos, roturas de pantalla, daños por agua y fallos técnicos.</p>
+                    <a href="#formulario-contratacion" class="btn ghost">Seleccionar</a>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h5>Rellena tus Datos</h5>
-                    <p>Completa nuestro breve formulario con la información de tu dispositivo y tus datos de contacto.</p>
+                <div class="card seguro-selector" data-seguro="Laptops">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="20" x2="22" y2="20"></line></svg>
+                    <h4>Seguro para Laptops</h4>
+                    <p>Cubre tu herramienta de trabajo o estudio contra averías, derrames y accidentes inesperados.</p>
+                    <a href="#formulario-contratacion" class="btn ghost">Seleccionar</a>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h5>Confirma por WhatsApp</h5>
-                    <p>Te contactaremos al instante por WhatsApp para finalizar la contratación de forma rápida y segura.</p>
+                <div class="card seguro-selector" data-seguro="Electrodomésticos">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2"></path><path d="M15.5 4.5l-1.06 1.06"></path><path d="M19 8h-2"></path><path d="M15.5 11.5l1.06 1.06"></path><path d="M12 14v-2"></path><path d="M4.5 15.5l1.06-1.06"></path><path d="M8 19H6"></path><path d="M4.5 8.5l-1.06-1.06"></path><path d="M14 19.75V22"></path><path d="M10 19.75V22"></path><path d="M12 14a2 2 0 0 1-2-2 2 2 0 0 1 2-2"></path><path d="M12 14a2 2 0 0 0 2-2 2 2 0 0 0-2-2"></path></svg>
+                    <h4>Seguro de Electrodomésticos</h4>
+                    <p>Asegura tus televisores, neveras y otros aparatos esenciales del hogar contra fallos eléctricos y averías.</p>
+                    <a href="#formulario-contratacion" class="btn ghost">Seleccionar</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="faq">
+    <section id="formulario-contratacion">
         <div class="container">
-          <div class="section__head">
-            <div class="section__kicker">Información</div>
-            <h2 class="section__title">Resolvemos tus dudas</h2>
-          </div>
-          <div class="faq">
-            <div class="q"><h5>¿Qué dispositivos puedo asegurar? <span class="arrow">▸</span></h5><p>Puedes asegurar smartphones, ordenadores portátiles, tablets, televisores y otros electrodomésticos. El precio se ajusta según el valor y las características del equipo.</p></div>
-            <div class="q"><h5>¿Cómo funciona el copago del 5%? <span class="arrow">▸</span></h5><p>En el Plan Normal, si la reparación de tu dispositivo cuesta 100.000 XAF, nosotros cubrimos 95.000 XAF y tú solo aportas 5.000 XAF. Es una forma de mantener el precio del seguro accesible.</p></div>
-            <div class="q"><h5>¿Qué es la Tarjeta WapSeguros? <span class="arrow">▸</span></h5><p>Es un beneficio exclusivo para clientes con planes anuales. Te da prioridad en el servicio técnico, descuentos en reparaciones fuera de cobertura y en servicios de software.</p></div>
-            <div class="q"><h5>¿Cómo gestiono una reclamación? <span class="arrow">▸</span></h5><p>Contactas con nosotros por WhatsApp, nos explicas lo ocurrido, y te guiamos en los siguientes pasos para la revisión y reparación de tu dispositivo de forma inmediata.</p></div>
-          </div>
-        </div>
-      </section>
-  
-      <section>
-        <div class="container">
-          <div class="cta">
-            <div>
-              <h2>¿Listo para estar protegido?</h2>
-              <p>No esperes a que ocurra un accidente. Asegura hoy tus herramientas de trabajo y ocio con un solo clic.</p>
+            <div class="section__head">
+                <div class="section__kicker">Contratación Rápida</div>
+                <h2 class="section__title">Rellena tus datos</h2>
+                <p class="section__lead">Completa el formulario y te contactaremos por WhatsApp para finalizar el proceso de forma segura y personalizada.</p>
             </div>
-            <a class="btn" href="https://wa.me/240555558213?text=Hola,%20estoy%20listo%20para%20contratar%20mi%20seguro." target="_blank">Contactar por WhatsApp</a>
+            <div class="form-container">
+                <form id="seguro-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" required placeholder="Escribe tu nombre y apellidos">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono de Contacto (WhatsApp)</label>
+                        <input type="tel" id="telefono" required placeholder="Tu número de teléfono">
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo-seguro">Tipo de Seguro Seleccionado</label>
+                        <input type="text" id="tipo-seguro" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Describe tu dispositivo (Marca y Modelo)</label>
+                        <textarea id="descripcion" required placeholder="Ej: iPhone 14 Pro, Portátil HP Pavilion, TV Samsung 55'"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Enviar y Abrir WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" style="background:var(--card); border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+      <div class="container">
+        <div class="section__head">
+          <div class="section__kicker">Ventajas Exclusivas</div>
+          <h2 class="section__title">Más que un seguro, una garantía de tranquilidad</h2>
+          <p class="section__lead">Nuestros planes están pensados para que un accidente no detenga tu día. Cubrimos la mayor parte de los costes y te damos beneficios extra.</p>
+        </div>
+        <div class="benefits-grid">
+          <ul class="list">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <div><b>Cobertura de hasta el 95%</b><br><small>En nuestro plan más básico, solo asumes el 5% de los gastos de reparación. Los planes superiores cubren hasta el 100%.</small></div>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8a13 13 0 0 1 13.95 20M12 19h5a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v5"></path><line x1="12" y1="1" x2="12" y2="4"></line><line x1="8.5" y1="2.5" x2="15.5" y2="2.5"></line></svg>
+              <div><b>Respuesta Rápida</b><br><small>Gestionamos tu incidencia en tiempo récord para que vuelvas a la normalidad lo antes posible.</small></div>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5 2.31V8c0 1.92-2.18 3.63-5 4.31-2.82-.68-5-2.39-5-4.31V4.99l5-2.3z"></path><path d="M12 22v-6.5"></path><path d="M20 12.5a8 8 0 1 0-16 0"></path></svg>
+              <div><b>Técnicos Certificados</b><br><small>Trabajamos solo con profesionales cualificados para garantizar reparaciones de máxima calidad.</small></div>
+            </li>
+          </ul>
+          <div class="card-promo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            <h4>Tarjeta WapSeguros</h4>
+            <p>Al contratar un plan anual, recibes tu tarjeta exclusiva con descuentos en servicios y prioridad en reparaciones.</p>
+            <a class="btn" href="#pricing">Ver Planes Anuales</a>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
+    <section id="pricing">
+      <div class="container">
+        <div class="section__head">
+          <div class="section__kicker">Planes y Precios</div>
+          <h2 class="section__title">Un plan para cada necesidad</h2>
+          <p class="section__lead">Tanto si eres un particular como una empresa, tenemos una solución flexible para ti. Sin sorpresas.</p>
+        </div>
+        <div class="pricing-toggle">
+          <button class="active" data-target="personal">Para Ti</button>
+          <button data-target="empresa">Para tu Empresa</button>
+        </div>
+
+        <div id="personal" class="price-plan active">
+          <div class="price">
+            <span class="chip">Esencial</span>
+            <h4>Normal</h4>
+            <div class="price__tag">5.000 <small>XAF/mes</small></div>
+            <p class="price__note">Tu primer mes por solo <strong>1.000 XAF</strong></p>
+            <ul class="price__features">
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>1 dispositivo asegurado</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Cobertura de robo y caídas</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Asumes solo el 5% de la reparación</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Soporte técnico por WhatsApp</li>
+            </ul>
+            <div class="price__cta"><a class="btn ghost" href="https://wa.me/240555558213?text=Hola,%20quiero%20contratar%20el%20Plan%20Normal." target="_blank">Contratar</a></div>
+          </div>
+          <div class="price price--pro">
+            <span class="chip">Más Popular</span>
+            <h4>Platino</h4>
+            <div class="price__tag">15.000 <small>XAF/mes</small></div>
+            <p class="price__note">Tu primer mes por solo <strong>1.000 XAF</strong></p>
+            <ul class="price__features">
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Hasta 3 dispositivos</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Todo lo del Plan Normal</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Cobertura de pantalla sin coste</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Asistencia de software prioritaria</li>
+            </ul>
+            <div class="price__cta"><a class="btn" href="https://wa.me/240555558213?text=Hola,%20quiero%20contratar%20el%20Plan%20Platino." target="_blank">Elegir Plan</a></div>
+          </div>
+          <div class="price">
+            <span class="chip">Todo Incluido</span>
+            <h4>Premium</h4>
+            <div class="price__tag">50.000 <small>XAF/trimestral</small></div>
+            <p class="price__note">Tu primer mes por solo <strong>1.000 XAF</strong></p>
+            <ul class="price__features">
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Hasta 5 dispositivos</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Todo lo del Plan Platino</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Recuperación de datos incluida</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Tarjeta WapSeguros y descuentos</li>
+            </ul>
+            <div class="price__cta"><a class="btn ghost" href="https://wa.me/240555558213?text=Hola,%20quiero%20contratar%20el%20Plan%20Premium." target="_blank">Contratar</a></div>
+          </div>
+        </div>
+        <div id="empresa" class="price-plan">
+          <div class="price price--pro">
+            <span class="chip">Negocios</span>
+            <h4>Empresas</h4>
+            <div class="price__tag">desde 25.000 <small>XAF/mes</small></div>
+            <p class="price__note">Descuento especial por pago anual</p>
+            <ul class="price__features">
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Cobertura para todos los equipos</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Soporte técnico prioritario 24/7</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Gestor de cuenta dedicado</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Revisiones y mantenimiento preventivo</li>
+            </ul>
+            <div class="price__cta"><a class="btn" href="https://wa.me/240555558213?text=Hola,%20quisiera%20cotizar%20un%20plan%20para%20mi%20empresa." target="_blank">Pedir Cotización</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="faq">
+      <div class="container">
+        <div class="section__head">
+          <div class="section__kicker">Información</div>
+          <h2 class="section__title">Resolvemos tus dudas</h2>
+          <p class="section__lead">Aquí encontrarás respuestas a las preguntas más comunes sobre nuestros servicios y coberturas.</p>
+        </div>
+        <div class="faq">
+          <div class="q">
+            <h5>¿Qué dispositivos puedo asegurar? <span class="arrow">▸</span></h5>
+            <p>Puedes asegurar smartphones, ordenadores portátiles, tablets y otros dispositivos electrónicos. El precio se ajusta según el valor y las características del equipo.</p>
+          </div>
+          <div class="q">
+            <h5>¿Cómo funciona el copago del 5%? <span class="arrow">▸</span></h5>
+            <p>En el Plan Normal, si la reparación de tu dispositivo cuesta 100.000 XAF, nosotros cubrimos 95.000 XAF y tú solo aportas 5.000 XAF. Es una forma de mantener el precio del seguro accesible.</p>
+          </div>
+           <div class="q">
+            <h5>¿Qué es la Tarjeta WapSeguros? <span class="arrow">▸</span></h5>
+            <p>Es un beneficio exclusivo para clientes con planes anuales. Te da prioridad en el servicio técnico, descuentos en reparaciones fuera de cobertura y en servicios de software.</p>
+          </div>
+           <div class="q">
+            <h5>¿Cómo se gestiona una reclamación? <span class="arrow">▸</span></h5>
+            <p>Es muy sencillo. Contactas con nosotros por WhatsApp, nos explicas lo ocurrido, y te guiamos en los siguientes pasos para la revisión y reparación de tu dispositivo.</p>
+          </div>
+           <div class="q">
+            <h5>¿Qué diferencia hay entre el plan mensual y el anual? <span class="arrow">▸</span></h5>
+            <p>Al pagar anualmente, obtienes un descuento de 5.000 XAF sobre el total y recibes la Tarjeta WapSeguros con beneficios adicionales. Es la opción más económica a largo plazo.</p>
+          </div>
+           <div class="q">
+            <h5>¿El plan para empresas es personalizable? <span class="arrow">▸</span></h5>
+            <p>Sí. El plan base comienza en 25.000 XAF/mes, pero lo adaptamos según el número y tipo de equipos que necesites asegurar. Contáctanos para una cotización a medida.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>¿Listo para estar protegido?</h2>
+            <p>No esperes a que ocurra un accidente. Asegura hoy tus herramientas de trabajo y ocio con un solo clic.</p>
+          </div>
+          <a class="btn" href="https://wa.me/240555558213?text=Hola,%20estoy%20listo%20para%20contratar%20mi%20seguro." target="_blank">Contactar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
     <div class="footer-links">
-      <a href="#" data-modal-target="modal-personal">Hacer Seguro</a>
+      <a href="https://wa.me/240555558213?text=Hola,%20quiero%20hacer%20un%20seguro." target="_blank">Hacer Seguro</a>
       <a href="#services">Servicios</a>
       <a href="#faq">Saber Más</a>
       <a href="#" id="privacy-policy-link">Políticas de Privacidad</a>
@@ -321,293 +459,123 @@
     <p>© 2025 WapSeguros - Guinea Ecuatorial | Contacto: +240 555 558 213</p>
   </footer>
 
-  <div id="modal-personal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>Contratar Seguro Personal</h3>
-        <button class="modal-close-btn">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form id="form-personal">
-          <div class="form-step active-step" data-step="1">
-            <h4>Paso 1: Elige tu plan</h4>
-            <div class="plan-options">
-              <label class="plan-option">
-                <input type="radio" name="planPersonal" value="Normal (5.000 XAF/mes)" checked>
-                <div class="plan-details">
-                  <strong>Plan Normal</strong>
-                  <small>5.000 XAF/mes - Ideal para un dispositivo.</small>
-                </div>
-              </label>
-              <label class="plan-option">
-                <input type="radio" name="planPersonal" value="Platino (15.000 XAF/mes)">
-                <div class="plan-details">
-                  <strong>Plan Platino</strong>
-                  <small>15.000 XAF/mes - Hasta 3 dispositivos y extras.</small>
-                </div>
-              </label>
-              <label class="plan-option">
-                <input type="radio" name="planPersonal" value="Premium (50.000 XAF/trimestral)">
-                <div class="plan-details">
-                  <strong>Plan Premium</strong>
-                  <small>50.000 XAF/trimestral - Cobertura total para 5 equipos.</small>
-                </div>
-              </label>
-            </div>
-            <div class="step-buttons">
-              <button type="button" class="btn next-step">Siguiente</button>
-            </div>
-          </div>
-          <div class="form-step" data-step="2">
-            <h4>Paso 2: Datos del dispositivo principal</h4>
-            <div class="form-group">
-                <label for="tipo-dispositivo-personal">Tipo de Dispositivo</label>
-                <input type="text" id="tipo-dispositivo-personal" required placeholder="Ej: Smartphone, Laptop, TV">
-            </div>
-             <div class="form-group">
-                <label for="descripcion-personal">Marca y Modelo</label>
-                <textarea id="descripcion-personal" required placeholder="Ej: iPhone 14 Pro, Portátil HP Pavilion..."></textarea>
-            </div>
-            <div class="step-buttons">
-                <button type="button" class="btn ghost prev-step">Anterior</button>
-                <button type="button" class="btn next-step">Siguiente</button>
-            </div>
-          </div>
-          <div class="form-step" data-step="3">
-             <h4>Paso 3: Tus datos de contacto</h4>
-             <div class="form-group">
-                <label for="nombre-personal">Nombre Completo</label>
-                <input type="text" id="nombre-personal" required placeholder="Tu nombre y apellidos">
-            </div>
-            <div class="form-group">
-                <label for="telefono-personal">Teléfono (WhatsApp)</label>
-                <input type="tel" id="telefono-personal" required placeholder="Tu número de contacto">
-            </div>
-             <div class="step-buttons">
-                <button type="button" class="btn ghost prev-step">Anterior</button>
-                <button type="submit" class="btn">Confirmar y Enviar por WhatsApp</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  
-  <div id="modal-empresa" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>Solicitar Seguro para Empresa</h3>
-        <button class="modal-close-btn">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form id="form-empresa">
-            <p style="color:var(--muted); margin-top:0;">Rellena los datos y un asesor se pondrá en contacto contigo para ofrecerte una cotización a medida.</p>
-             <div class="form-group">
-                <label for="nombre-empresa">Nombre de la Empresa</label>
-                <input type="text" id="nombre-empresa" required placeholder="Nombre comercial de tu empresa">
-            </div>
-            <div class="form-group">
-                <label for="nombre-contacto-empresa">Nombre del Contacto</label>
-                <input type="text" id="nombre-contacto-empresa" required placeholder="Persona de contacto">
-            </div>
-            <div class="form-group">
-                <label for="telefono-empresa">Teléfono (WhatsApp)</label>
-                <input type="tel" id="telefono-empresa" required placeholder="Número de contacto de la empresa">
-            </div>
-            <div class="form-group">
-                <label for="descripcion-empresa">¿Qué equipos necesitas asegurar?</label>
-                <textarea id="descripcion-empresa" required placeholder="Ej: 10 portátiles, 5 smartphones, 2 impresoras..."></textarea>
-            </div>
-             <div class="step-buttons">
-                <button type="submit" class="btn" style="width:100%">Solicitar Cotización por WhatsApp</button>
-            </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
   <div id="privacy-modal" class="modal">
     <div class="dialog">
-      <button class="modal-close-btn">&times;</button>
+      <button class="close-btn" onclick="closeModal()">&times;</button>
       <h3>Política de Privacidad</h3>
       <p><strong>Última actualización:</strong> 21 de Septiembre de 2025</p>
       <p>En WapSeguros, tu privacidad es nuestra prioridad. Esta política explica de forma sencilla qué información recogemos y cómo la usamos.</p>
+      
       <h5>1. Información que Recopilamos</h5>
       <ul>
         <li><strong>Información de Contacto:</strong> Nombre y número de teléfono que nos proporcionas al contactarnos.</li>
         <li><strong>Información del Dispositivo:</strong> Marca, modelo y número de serie del equipo que deseas asegurar para gestionar tu póliza.</li>
+        <li><strong>Información de Pago:</strong> Datos necesarios para procesar los pagos de tu plan, gestionados de forma segura.</li>
       </ul>
+
       <h5>2. Cómo Usamos tu Información</h5>
       <ul>
         <li>Para crear y administrar tu póliza de seguro.</li>
         <li>Para comunicarnos contigo sobre tus pagos, reclamaciones o consultas.</li>
+        <li>Para procesar reclamaciones y coordinar reparaciones.</li>
         <li>Nunca venderemos tu información personal a terceros.</li>
       </ul>
+
+      <h5>3. Seguridad de tus Datos</h5>
+      <p>Utilizamos medidas de seguridad para proteger tu información contra accesos no autorizados. Todas las comunicaciones y datos se manejan con estricta confidencialidad.</p>
+
       <h5>4. Responsabilidad</h5>
-      <p>WapSeguros actúa como intermediario entre el cliente y los servicios técnicos. Nuestra responsabilidad se limita a la gestión de la cobertura descrita en el plan contratado. No nos hacemos responsables de deudas o disputas derivadas de servicios no cubiertos.</p>
-      <p><br><em><strong>Aviso legal:</strong> Este es un resumen informativo. Para obtener detalles completos, por favor, consulta los términos y condiciones al contratar tu plan.</em></p>
+      <p>WapSeguros actúa como intermediario entre el cliente y los servicios técnicos. Nuestra responsabilidad se limita a la gestión de la cobertura descrita en el plan contratado. No nos hacemos responsables de deudas o disputas derivadas de servicios no cubiertos o de reparaciones realizadas por terceros no autorizados por nosotros.</p>
+
+      <h5>5. Cambios en la Política</h5>
+      <p>Nos reservamos el derecho de modificar esta política. Cualquier cambio será notificado a nuestros clientes activos. El uso continuado del servicio implica la aceptación de los nuevos términos.</p>
+      
+      <p><br><em><strong>Aviso legal:</strong> Este es un resumen informativo. Para obtener detalles completos, por favor, consulta los términos y condiciones al contratar tu plan. Te recomendamos buscar asesoramiento legal independiente si tienes dudas específicas.</em></p>
     </div>
   </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+  // ===== SLIDER MANUAL =====
+  const track = document.querySelector('.slider-track');
+  const slides = Array.from(track.children);
+  const nextButton = document.querySelector('.next');
+  const prevButton = document.querySelector('.prev');
+  const slideWidth = slides[0].getBoundingClientRect().width;
 
-    // ===== SLIDER MANUAL =====
-    const track = document.querySelector('.slider-track');
-    if (track) {
-        const slides = Array.from(track.children);
-        const nextButton = document.querySelector('.next');
-        const prevButton = document.querySelector('.prev');
-        let slideWidth = slides.length > 0 ? slides[0].getBoundingClientRect().width : 0;
-        let currentIndex = 0;
+  let currentIndex = 0;
 
-        const moveToSlide = (targetIndex) => {
-            if (!track) return;
-            track.style.transform = 'translateX(-' + slideWidth * targetIndex + 'px)';
-            currentIndex = targetIndex;
-        };
-        
-        window.addEventListener('resize', () => {
-            slideWidth = slides.length > 0 ? slides[0].getBoundingClientRect().width : 0;
-            moveToSlide(currentIndex);
-        });
+  const moveToSlide = (targetIndex) => {
+    track.style.transform = 'translateX(-' + slideWidth * targetIndex + 'px)';
+    currentIndex = targetIndex;
+  };
 
-        nextButton.addEventListener('click', () => {
-            const nextIndex = (currentIndex + 1) % slides.length;
-            moveToSlide(nextIndex);
-        });
+  nextButton.addEventListener('click', e => {
+    const nextIndex = (currentIndex + 1) % slides.length;
+    moveToSlide(nextIndex);
+  });
 
-        prevButton.addEventListener('click', () => {
-            const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-            moveToSlide(prevIndex);
-        });
-        moveToSlide(0); // Initialize position
-    }
+  prevButton.addEventListener('click', e => {
+    const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+    moveToSlide(prevIndex);
+  });
 
-    // ===== LÓGICA DE MODALES =====
-    const modalTriggers = document.querySelectorAll('[data-modal-target]');
-    const modals = document.querySelectorAll('.modal');
-    const modalCloseBtns = document.querySelectorAll('.modal-close-btn');
+  // ===== SELECCIÓN DE SEGURO Y SCROLL AL FORMULARIO =====
+  const seguroSelectors = document.querySelectorAll('.seguro-selector');
+  const tipoSeguroInput = document.getElementById('tipo-seguro');
+  const formSection = document.getElementById('formulario-contratacion');
 
-    const openModal = (modalId) => {
-        const modal = document.getElementById(modalId);
-        if (modal) modal.classList.add('active');
-    };
+  seguroSelectors.forEach(selector => {
+      selector.addEventListener('click', (e) => {
+          e.preventDefault();
+          const tipo = selector.dataset.seguro;
+          tipoSeguroInput.value = tipo;
+          formSection.scrollIntoView({ behavior: 'smooth' });
+      });
+  });
 
-    const closeModal = () => {
-        modals.forEach(modal => modal.classList.remove('active'));
-    };
+  // ===== ENVÍO DE FORMULARIO A WHATSAPP =====
+  const seguroForm = document.getElementById('seguro-form');
+  seguroForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const nombre = document.getElementById('nombre').value;
+      const telefono = document.getElementById('telefono').value;
+      const tipoSeguro = document.getElementById('tipo-seguro').value;
+      const descripcion = document.getElementById('descripcion').value;
 
-    modalTriggers.forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal(trigger.dataset.modalTarget);
-        });
+      const mensaje = `¡Hola WapSeguros! 👋\n\nQuisiera contratar un seguro con los siguientes datos:\n\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n*Tipo de Seguro:* ${tipoSeguro}\n*Dispositivo:* ${descripcion}\n\nQuedo a la espera de vuestro contacto. ¡Gracias!`;
+      
+      const whatsappURL = `https://wa.me/240555558213?text=${encodeURIComponent(mensaje)}`;
+      
+      window.open(whatsappURL, '_blank');
+  });
+
+
+  // ===== SCRIPTS ANTERIORES (FAQ, PRICING TOGGLE, MODAL) =====
+  document.querySelectorAll('.faq .q').forEach(q => {
+    q.addEventListener('click', () => { q.classList.toggle('open'); });
+  });
+
+  const pricingToggleButtons = document.querySelectorAll('.pricing-toggle button');
+  const pricePlans = document.querySelectorAll('.price-plan');
+  pricingToggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.dataset.target;
+      pricingToggleButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      pricePlans.forEach(plan => {
+        plan.id === targetId ? plan.classList.add('active') : plan.classList.remove('active');
+      });
     });
+  });
+  
+  const privacyModal = document.getElementById('privacy-modal');
+  const privacyLink = document.getElementById('privacy-policy-link');
+  function openModal() { privacyModal.style.display = 'flex'; }
+  function closeModal() { privacyModal.style.display = 'none'; }
+  privacyLink.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+  privacyModal.addEventListener('click', (e) => { if (e.target === privacyModal) closeModal(); });
 
-    modalCloseBtns.forEach(btn => btn.addEventListener('click', closeModal));
-    modals.forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-    });
-
-    // ===== LÓGICA DE FORMULARIO MULTI-PASO (Seguro Personal) =====
-    const personalForm = document.getElementById('form-personal');
-    if(personalForm){
-        const steps = personalForm.querySelectorAll('.form-step');
-        let currentStep = 1;
-
-        const updateSteps = () => {
-            steps.forEach(step => {
-                step.classList.toggle('active-step', parseInt(step.dataset.step) === currentStep);
-            });
-        };
-
-        personalForm.querySelectorAll('.next-step').forEach(button => {
-            button.addEventListener('click', () => {
-                // Validación simple antes de pasar al siguiente paso
-                const currentStepElement = personalForm.querySelector(`.form-step[data-step="${currentStep}"]`);
-                const inputs = currentStepElement.querySelectorAll('input[required], textarea[required]');
-                let isValid = true;
-                inputs.forEach(input => {
-                    if (!input.value.trim()) {
-                        isValid = false;
-                        input.style.borderColor = 'red';
-                    } else {
-                        input.style.borderColor = '#e2e8f0';
-                    }
-                });
-
-                if (isValid && currentStep < steps.length) {
-                    currentStep++;
-                    updateSteps();
-                } else if(!isValid) {
-                    alert('Por favor, completa todos los campos requeridos.');
-                }
-            });
-        });
-
-        personalForm.querySelectorAll('.prev-step').forEach(button => {
-            button.addEventListener('click', () => {
-                if (currentStep > 1) {
-                    currentStep--;
-                    updateSteps();
-                }
-            });
-        });
-        updateSteps(); // Initialize
-    }
-
-
-    // ===== ENVÍO DE FORMULARIO PERSONAL A WHATSAPP =====
-    if(personalForm){
-        personalForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const plan = personalForm.querySelector('input[name="planPersonal"]:checked').value;
-            const tipoDispositivo = document.getElementById('tipo-dispositivo-personal').value;
-            const descripcion = document.getElementById('descripcion-personal').value;
-            const nombre = document.getElementById('nombre-personal').value;
-            const telefono = document.getElementById('telefono-personal').value;
-
-            const mensaje = `¡Hola WapSeguros! 👋\n\nQuisiera contratar un SEGURO PERSONAL con los siguientes datos:\n\n*Plan Seleccionado:* ${plan}\n*Tipo de Dispositivo:* ${tipoDispositivo}\n*Marca y Modelo:* ${descripcion}\n\n---\n*Mi Nombre:* ${nombre}\n*Mi Teléfono:* ${telefono}\n\nQuedo a la espera de vuestro contacto para finalizar. ¡Gracias!`;
-            
-            const whatsappURL = `https://wa.me/240555558213?text=${encodeURIComponent(mensaje)}`;
-            window.open(whatsappURL, '_blank');
-        });
-    }
-
-    // ===== ENVÍO DE FORMULARIO EMPRESA A WHATSAPP =====
-    const empresaForm = document.getElementById('form-empresa');
-    if(empresaForm){
-        empresaForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const nombreEmpresa = document.getElementById('nombre-empresa').value;
-            const nombreContacto = document.getElementById('nombre-contacto-empresa').value;
-            const telefonoEmpresa = document.getElementById('telefono-empresa').value;
-            const descripcionEquipos = document.getElementById('descripcion-empresa').value;
-
-            const mensaje = `¡Hola WapSeguros! 👋\n\nSolicito una cotización para un SEGURO DE EMPRESA con los siguientes datos:\n\n*Nombre de la Empresa:* ${nombreEmpresa}\n*Persona de Contacto:* ${nombreContacto}\n*Teléfono de Contacto:* ${telefonoEmpresa}\n*Equipos a asegurar:* ${descripcionEquipos}\n\nPor favor, contacten conmigo para detallar la propuesta. ¡Gracias!`;
-            
-            const whatsappURL = `https://wa.me/240555558213?text=${encodeURIComponent(mensaje)}`;
-            window.open(whatsappURL, '_blank');
-        });
-    }
-
-    // ===== SCRIPTS ANTERIORES =====
-    document.querySelectorAll('.faq .q').forEach(q => {
-        q.addEventListener('click', () => { q.classList.toggle('open'); });
-    });
-    const privacyLink = document.getElementById('privacy-policy-link');
-    if(privacyLink) {
-        privacyLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal('privacy-modal');
-        });
-    }
-});
 </script>
 
 </body>
