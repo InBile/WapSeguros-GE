@@ -2,43 +2,557 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WapSeguros - Protección para tu tecnología</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WapSeguros — Tu Tecnología, Siempre Protegida.</title>
+  <meta name="description" content="WapSeguros: Seguros electrónicos para personas y empresas. Protege tus móviles, portátiles y más con planes flexibles y soporte rápido." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card: #FFFFFF;
+      --ink: #111827;
+      --muted: #6b7280;
+      --brand: #007bff;
+      --brand-light: #e6f2ff;
+      --dark: #131921;
+      --ring: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --container: 1100px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 16px; }
+    .btn {
+      background: var(--brand);
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+    .btn.ghost { background: transparent; border: 1px solid #e2e8f0; color: var(--ink); box-shadow: none; }
+    .btn.ghost:hover { background: #f1f5f9; }
+    .btn:hover { background: #0056b3; transform: translateY(-1px); }
+
+    /* ===== NAV ===== */
+    .header { background: var(--card); color: var(--ink); padding: 16px 18px; position: sticky; top: 0; z-index: 100; box-shadow: var(--ring); border-bottom: 1px solid #e2e8f0; }
+    .header-content { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
+    .brand { font-weight: 800; font-size: 22px; }
+    .brand span { color: var(--brand); }
+    .nav__spacer { flex: 1; }
+    .nav__links { display: flex; gap: 8px; }
+    .nav__links a { padding: 8px 16px; border-radius: 6px; font-weight: 500; transition: color 0.2s, background-color 0.2s; }
+    .nav__links a:hover { color: var(--brand); }
+    .nav__cta { display: flex; gap: 10px; }
+
+    /* ===== HERO ===== */
+    .hero { text-align: center; padding: 80px 0; }
+    .hero__title { font-size: clamp(40px, 6vw, 68px); font-weight: 800; letter-spacing: -2px; margin: 0 0 12px; }
+    .hero__title span { color: var(--brand); }
+    .hero__subtitle { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); margin: 0 0 30px; max-width: 700px; line-height: 1.7; }
+    .hero__cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+    /* ===== SLIDER DE PUBLICIDAD ===== */
+    .slider {
+      width: 100%;
+      overflow: hidden;
+      padding: 40px 0;
+      background: var(--card);
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .slider__track {
+      display: flex;
+      width: calc(250px * 10); /* 250px por imagen, 10 imágenes */
+      animation: scroll 30s linear infinite;
+    }
+    .slide { width: 250px; padding: 0 15px; }
+    .slide img {
+      height: 150px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: var(--ring);
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-250px * 5)); } /* La mitad para un bucle fluido */
+    }
+
+    /* ===== SECCIONES ===== */
+    section { padding: 80px 0; }
+    .section__head { margin: 0 0 50px; text-align: center; }
+    .section__kicker { color: var(--brand); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: .8rem; }
+    .section__title { font-size: clamp(28px, 4vw, 42px); margin: 6px 0 10px; letter-spacing: -0.5px; }
+    .section__lead { color: var(--muted); font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
+
+    /* ===== FEATURES GRID ===== */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .card {
+      background: var(--card);
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: var(--ring);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .card h4 { margin: 16px 0 6px; font-size: 1.2rem; font-weight: 600; }
+    .card p { color: var(--muted); margin: 0; font-size: 0.95rem; }
+    .card svg { width: 36px; height: 36px; color: var(--brand); }
+
+    /* ===== VENTAJAS ===== */
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; }
+    .list { display: grid; gap: 20px; list-style: none; padding: 0;}
+    .list li { display: flex; gap: 16px; align-items: flex-start; font-size: 1.1rem; }
+    .list li svg { min-width: 24px; height: 24px; color: var(--brand); margin-top: 4px; }
+    .card-promo {
+      background: var(--dark);
+      color: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+    }
+    .card-promo h4 { margin: 0 0 10px; font-size: 1.5rem; }
+    .card-promo p { opacity: .9; margin-bottom: 20px; }
+
+    /* ===== PRICING ===== */
+    .pricing-toggle { text-align: center; margin-bottom: 40px; }
+    .pricing-toggle button {
+        background: #e2e8f0; color: var(--muted); border: none; padding: 10px 20px;
+        border-radius: 99px; cursor: pointer; font-weight: 600;
+    }
+    .pricing-toggle button.active { background: var(--brand); color: #fff; }
+    .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .price-plan { display: none; }
+    .price-plan.active { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;}
+    .price {
+      background: var(--card);
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 30px;
+      display: flex; flex-direction: column; text-align: center;
+    }
+    .price--pro { border-color: var(--brand); box-shadow: 0 10px 30px rgba(0, 123, 255, 0.15); }
+    .price h4 { margin: 0 0 8px; font-size: 1.4rem; font-weight: 600; }
+    .price .chip { display: inline-block; font-size: .75rem; padding: 4px 10px; border-radius: 999px; background: var(--brand-light); color: var(--brand); font-weight: 600; margin-bottom: 16px; }
+    .price__tag { font-size: 38px; font-weight: 700; margin-bottom: 8px; }
+    .price__tag small { font-size: 1rem; color: var(--muted); font-weight: 500; }
+    .price__note { font-size: 0.9rem; color: var(--muted); min-height: 40px; }
+    .price__features { list-style: none; padding: 0; margin: 20px 0; text-align: left; }
+    .price__features li { color: var(--muted); margin-bottom: 12px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+    .price__features li svg { min-width: 18px; color: var(--brand); }
+    .price__cta { margin-top: auto; }
+
+    /* ===== FAQ ===== */
+    .faq { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .faq .q {
+      background: var(--card); border-radius: 8px; padding: 20px;
+      cursor: pointer;
+    }
+    .faq .q h5 { margin: 0; font-size: 1.1rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+    .faq .q p { color: var(--muted); margin: 10px 0 0; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, margin-top 0.35s ease; }
+    .faq .q.open p { max-height: 180px; }
+    .faq .q .arrow { transition: transform 0.3s ease; }
+    .faq .q.open .arrow { transform: rotate(90deg); }
+
+    /* ===== CTA FINAL ===== */
+    .cta { background: var(--dark); color: #fff; border-radius: 12px; padding: 50px; text-align: center; }
+    .cta h2 { font-size: clamp(24px, 3.4vw, 36px); font-weight: 700; margin: 0 0 8px; }
+    .cta p { opacity: .9; margin: 0 0 24px; max-width: 600px; margin-left: auto; margin-right: auto;}
+    
+    /* ===== FOOTER ===== */
+    .footer { background: var(--dark); color: #fff; text-align: center; font-size: 14px; padding: 40px 18px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; flex-wrap: wrap; }
+    .footer-links a { color: #E5E7EB; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--brand); }
+    .footer p { color: var(--muted); margin: 0; }
+
+    /* ===== MODAL DE PRIVACIDAD ===== */
+    .modal {
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); display: none; align-items: center; justify-content: center;
+      padding: 1rem; z-index: 99999; backdrop-filter: blur(4px);
+    }
+    .dialog {
+      background: var(--card); width: 100%; max-width: 600px; border-radius: 8px; box-shadow: 0 18px 50px rgba(17, 24, 39, 0.12); padding: 2rem;
+      max-height: 80vh; overflow-y: auto;
+    }
+    .dialog h3 { margin-top: 0; }
+    .dialog p, .dialog li { color: var(--muted); font-size: 0.95rem; }
+    .dialog .close-btn { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--muted); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .features, .pricing, .faq { grid-template-columns: 1fr; }
+      .price-plan.active { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .header-content { justify-content: space-between; }
+      .nav__links { display: none; }
+      .hero { padding: 60px 0; }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>WapSeguros</h1>
-      <p>Soluciones electrónicas y seguros desde solo 1.000 XAF</p>
+
+  <header class="header">
+    <div class="header-content">
+      <a href="#" class="brand">Wap<span>Seguros</span></a>
+      <nav class="nav__links">
+        <a href="#services">Servicios</a>
+        <a href="#benefits">Ventajas</a>
+        <a href="#pricing">Planes</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav__spacer"></div>
+      <div class="nav__cta">
+        <a class="btn" href="https://wa.me/240555558213?text=Hola,%20me%20gustaría%20contratar%20un%20seguro." target="_blank">Contratar ahora</a>
+      </div>
     </div>
   </header>
 
-  <section class="intro">
-    <div class="container">
-      <h2>Protege tus dispositivos desde 5.000 XAF</h2>
-      <p>Tu primer mes por solo 1.000 XAF</p>
-      <a class="cta-button" href="https://wa.me/240555558213" target="_blank">Hacer seguro ahora</a>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="container hero__wrap">
+        <h1 class="hero__title">Protege. Trabaja. <span>Disfruta.</span></h1>
+        <p class="hero__subtitle">
+          La tranquilidad que necesitas para tus dispositivos. Cobertura completa, gestión fácil y soporte al instante. Tu tecnología, siempre segura.
+        </p>
+        <div class="hero__cta">
+          <a class="btn" href="#pricing">Ver Planes</a>
+          <a class="btn ghost" href="https://wa.me/240555558213?text=Hola,%20quisiera%20más%20información%20sobre%20los%20seguros%20para%20empresas." target="_blank">Seguro para Empresas</a>
+        </div>
+      </div>
+    </section>
 
-  <section class="services">
-    <div class="container">
-      <h2>Servicios disponibles</h2>
-      <ul>
-        <li>✅ Seguro para móviles, tablets y portátiles</li>
-        <li>✅ Activación de Windows y Microsoft Office</li>
-        <li>✅ Actualización de software</li>
-        <li>✅ Solución de problemas electrónicos comunes</li>
-      </ul>
-      <a class="cta-secondary" href="https://wa.me/240555558213" target="_blank">Solicitar servicio por WhatsApp</a>
+    <div class="slider">
+      <div class="slider__track">
+        <div class="slide"><img src="https://images.unsplash.com/photo-1587573249130-13813fac71b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzOTk5Mjh8MHwxfGFsbHx8fHx8fHx8fDE3MzIzNTk0OTZ8&ixlib=rb-4.0.3&q=80&w=400" alt="Publicidad 1"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzOTk5Mjh8MHwxfGFsbHx8fHx8fHx8fDE3MzIzNTk1MDV8&ixlib=rb-4.0.3&q=80&w=400" alt="Publicidad 2"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzOTk5Mjh8MHwxfGFsbHx8fHx8fHx8fDE3MzIzNTk1MTB8&ixlib=rb-4.0.3&q=80&w=400" alt="Publicidad 3"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1611262588024-d12430b98920?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzOTk5Mjh8MHwxfGFsbHx8fHx8fHx8fDE3MzIzNTk1MTR8&ixlib=rb-4.0.3&q=80&w=400" alt="Publicidad 4"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzOTk5Mjh8MHwxfGFsbHx8fHx8fHx8fDE3MzIzNTk1MTl8&ixlib=rb-4.0.3&q=80&w=400" alt="Publicidad 5"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1587573249130-13813fac71b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzOTk5Mjh8MHwxfGFsbHx8fHx8fHx8fDE3MzIzNTk0OTZ8&ixlib=rb-4.0.3&q=80&w=400" alt="Publicidad 1"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzOTk5Mjh8MHwxfGFsbHx8fHx8fHx8fDE3MzIzNTk1MDV8&ixlib=rb-4.0.3&q=80&w=400" alt="Publicidad 2"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzOTk5Mjh8MHwxfGFsbHx8fHx8fHx8fDE3MzIzNTk1MTB8&ixlib=rb-4.0.3&q=80&w=400" alt="Publicidad 3"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1611262588024-d12430b98920?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzOTk5Mjh8MHwxfGFsbHx8fHx8fHx8fDE3MzIzNTk1MTR8&ixlib=rb-4.0.3&q=80&w=400" alt="Publicidad 4"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzOTk5Mjh8MHwxfGFsbHx8fHx8fHx8fDE3MzIzNTk1MTl8&ixlib=rb-4.0.3&q=80&w=400" alt="Publicidad 5"></div>
+      </div>
     </div>
-  </section>
 
-  <footer>
-    <div class="container">
-      <p>© 2025 WapSeguros - Guinea Ecuatorial | Contacto: +240 555 558 213</p>
+    <section id="services">
+      <div class="container">
+        <div class="section__head">
+          <div class="section__kicker">Cobertura Total</div>
+          <h2 class="section__title">Servicios que te dan tranquilidad</h2>
+          <p class="section__lead">Desde la protección de tu hardware hasta el soporte de software, estamos aquí para resolver cualquier problema.</p>
+        </div>
+        <div class="features">
+          <div class="card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            <h4>Seguros para Dispositivos</h4>
+            <p>Cobertura completa para móviles, portátiles y tablets contra robos, caídas y daños por líquidos.</p>
+          </div>
+          <div class="card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l-7-7 7-7 7 7-7 7zM12 5v14"></path></svg>
+            <h4>Recuperación de Datos</h4>
+            <p>Servicio especializado para recuperar información valiosa de dispositivos dañados.</p>
+          </div>
+          <div class="card">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <h4>Protección de Pantalla</h4>
+            <p>Planes específicos para cubrir la reparación o reemplazo de pantallas rotas, un problema común.</p>
+          </div>
+          <div class="card">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+            <h4>Soporte y Activación</h4>
+            <p>Asistencia remota para activar Windows, Office y solucionar problemas de software habituales.</p>
+          </div>
+          <div class="card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <h4>Planes para Empresas</h4>
+            <p>Cobertura para equipos de trabajo, con soporte prioritario y gestión centralizada.</p>
+          </div>
+          <div class="card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <h4>Asistencia Premium</h4>
+            <p>Soporte técnico prioritario y revisiones periódicas para mantener tus equipos en perfecto estado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefits" style="background:var(--card); border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+      <div class="container">
+        <div class="section__head">
+          <div class="section__kicker">Ventajas Exclusivas</div>
+          <h2 class="section__title">Más que un seguro, una garantía de tranquilidad</h2>
+          <p class="section__lead">Nuestros planes están pensados para que un accidente no detenga tu día. Cubrimos la mayor parte de los costes y te damos beneficios extra.</p>
+        </div>
+        <div class="benefits-grid">
+          <ul class="list">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <div><b>Cobertura de hasta el 95%</b><br><small>En nuestro plan más básico, solo asumes el 5% de los gastos de reparación. Los planes superiores cubren hasta el 100%.</small></div>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8a13 13 0 0 1 13.95 20M12 19h5a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v5"></path><line x1="12" y1="1" x2="12" y2="4"></line><line x1="8.5" y1="2.5" x2="15.5" y2="2.5"></line></svg>
+              <div><b>Respuesta Rápida</b><br><small>Gestionamos tu incidencia en tiempo récord para que vuelvas a la normalidad lo antes posible.</small></div>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5 2.31V8c0 1.92-2.18 3.63-5 4.31-2.82-.68-5-2.39-5-4.31V4.99l5-2.3z"></path><path d="M12 22v-6.5"></path><path d="M20 12.5a8 8 0 1 0-16 0"></path></svg>
+              <div><b>Técnicos Certificados</b><br><small>Trabajamos solo con profesionales cualificados para garantizar reparaciones de máxima calidad.</small></div>
+            </li>
+          </ul>
+          <div class="card-promo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            <h4>Tarjeta WapSeguros</h4>
+            <p>Al contratar un plan anual, recibes tu tarjeta exclusiva con descuentos en servicios y prioridad en reparaciones.</p>
+            <a class="btn" href="#pricing">Ver Planes Anuales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section__head">
+          <div class="section__kicker">Planes y Precios</div>
+          <h2 class="section__title">Un plan para cada necesidad</h2>
+          <p class="section__lead">Tanto si eres un particular como una empresa, tenemos una solución flexible para ti. Sin sorpresas.</p>
+        </div>
+        <div class="pricing-toggle">
+          <button class="active" data-target="personal">Para Ti</button>
+          <button data-target="empresa">Para tu Empresa</button>
+        </div>
+
+        <div id="personal" class="price-plan active">
+          <div class="price">
+            <span class="chip">Esencial</span>
+            <h4>Normal</h4>
+            <div class="price__tag">5.000 <small>XAF/mes</small></div>
+            <p class="price__note">Tu primer mes por solo <strong>1.000 XAF</strong></p>
+            <ul class="price__features">
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>1 dispositivo asegurado</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Cobertura de robo y caídas</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Asumes solo el 5% de la reparación</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Soporte técnico por WhatsApp</li>
+            </ul>
+            <div class="price__cta"><a class="btn ghost" href="https://wa.me/240555558213?text=Hola,%20quiero%20contratar%20el%20Plan%20Normal." target="_blank">Contratar</a></div>
+          </div>
+          <div class="price price--pro">
+            <span class="chip">Más Popular</span>
+            <h4>Platino</h4>
+            <div class="price__tag">15.000 <small>XAF/mes</small></div>
+            <p class="price__note">Tu primer mes por solo <strong>1.000 XAF</strong></p>
+            <ul class="price__features">
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Hasta 3 dispositivos</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Todo lo del Plan Normal</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Cobertura de pantalla sin coste</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Asistencia de software prioritaria</li>
+            </ul>
+            <div class="price__cta"><a class="btn" href="https://wa.me/240555558213?text=Hola,%20quiero%20contratar%20el%20Plan%20Platino." target="_blank">Elegir Plan</a></div>
+          </div>
+          <div class="price">
+            <span class="chip">Todo Incluido</span>
+            <h4>Premium</h4>
+            <div class="price__tag">50.000 <small>XAF/trimestral</small></div>
+            <p class="price__note">Tu primer mes por solo <strong>1.000 XAF</strong></p>
+            <ul class="price__features">
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Hasta 5 dispositivos</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Todo lo del Plan Platino</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Recuperación de datos incluida</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Tarjeta WapSeguros y descuentos</li>
+            </ul>
+            <div class="price__cta"><a class="btn ghost" href="https://wa.me/240555558213?text=Hola,%20quiero%20contratar%20el%20Plan%20Premium." target="_blank">Contratar</a></div>
+          </div>
+        </div>
+        <div id="empresa" class="price-plan">
+          <div class="price price--pro">
+            <span class="chip">Negocios</span>
+            <h4>Empresas</h4>
+            <div class="price__tag">desde 25.000 <small>XAF/mes</small></div>
+            <p class="price__note">Descuento especial por pago anual</p>
+            <ul class="price__features">
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Cobertura para todos los equipos</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Soporte técnico prioritario 24/7</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Gestor de cuenta dedicado</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Revisiones y mantenimiento preventivo</li>
+            </ul>
+            <div class="price__cta"><a class="btn" href="https://wa.me/240555558213?text=Hola,%20quisiera%20cotizar%20un%20plan%20para%20mi%20empresa." target="_blank">Pedir Cotización</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="faq">
+      <div class="container">
+        <div class="section__head">
+          <div class="section__kicker">Información</div>
+          <h2 class="section__title">Resolvemos tus dudas</h2>
+          <p class="section__lead">Aquí encontrarás respuestas a las preguntas más comunes sobre nuestros servicios y coberturas.</p>
+        </div>
+        <div class="faq">
+          <div class="q">
+            <h5>¿Qué dispositivos puedo asegurar? <span class="arrow">▸</span></h5>
+            <p>Puedes asegurar smartphones, ordenadores portátiles, tablets y otros dispositivos electrónicos. El precio se ajusta según el valor y las características del equipo.</p>
+          </div>
+          <div class="q">
+            <h5>¿Cómo funciona el copago del 5%? <span class="arrow">▸</span></h5>
+            <p>En el Plan Normal, si la reparación de tu dispositivo cuesta 100.000 XAF, nosotros cubrimos 95.000 XAF y tú solo aportas 5.000 XAF. Es una forma de mantener el precio del seguro accesible.</p>
+          </div>
+          <div class="q">
+            <h5>¿Qué es la Tarjeta WapSeguros? <span class="arrow">▸</span></h5>
+            <p>Es un beneficio exclusivo para clientes con planes anuales. Te da prioridad en el servicio técnico, descuentos en reparaciones fuera de cobertura y en servicios de software.</p>
+          </div>
+          <div class="q">
+            <h5>¿Cómo se gestiona una reclamación? <span class="arrow">▸</span></h5>
+            <p>Es muy sencillo. Contactas con nosotros por WhatsApp, nos explicas lo ocurrido, y te guiamos en los siguientes pasos para la revisión y reparación de tu dispositivo.</p>
+          </div>
+           <div class="q">
+            <h5>¿Qué diferencia hay entre el plan mensual y el anual? <span class="arrow">▸</span></h5>
+            <p>Al pagar anualmente, obtienes un descuento de 5.000 XAF sobre el total y recibes la Tarjeta WapSeguros con beneficios adicionales. Es la opción más económica a largo plazo.</p>
+          </div>
+           <div class="q">
+            <h5>¿El plan para empresas es personalizable? <span class="arrow">▸</span></h5>
+            <p>Sí. El plan base comienza en 25.000 XAF/mes, pero lo adaptamos según el número y tipo de equipos que necesites asegurar. Contáctanos para una cotización a medida.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>¿Listo para estar protegido?</h2>
+            <p>No esperes a que ocurra un accidente. Asegura hoy tus herramientas de trabajo y ocio con un solo clic.</p>
+          </div>
+          <a class="btn" href="https://wa.me/240555558213?text=Hola,%20estoy%20listo%20para%20contratar%20mi%20seguro." target="_blank">Contactar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="https://wa.me/240555558213?text=Hola,%20quiero%20hacer%20un%20seguro." target="_blank">Hacer Seguro</a>
+      <a href="#services">Servicios</a>
+      <a href="#faq">Saber Más</a>
+      <a href="#" id="privacy-policy-link">Políticas de Privacidad</a>
     </div>
+    <p>© 2025 WapSeguros - Guinea Ecuatorial | Contacto: +240 555 558 213</p>
   </footer>
+
+  <div id="privacy-modal" class="modal">
+    <div class="dialog">
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+      <h3>Política de Privacidad</h3>
+      <p><strong>Última actualización:</strong> 21 de Septiembre de 2025</p>
+      <p>En WapSeguros, tu privacidad es nuestra prioridad. Esta política explica de forma sencilla qué información recogemos y cómo la usamos.</p>
+      
+      <h5>1. Información que Recopilamos</h5>
+      <ul>
+        <li><strong>Información de Contacto:</strong> Nombre y número de teléfono que nos proporcionas al contactarnos.</li>
+        <li><strong>Información del Dispositivo:</strong> Marca, modelo y número de serie del equipo que deseas asegurar para gestionar tu póliza.</li>
+        <li><strong>Información de Pago:</strong> Datos necesarios para procesar los pagos de tu plan, gestionados de forma segura.</li>
+      </ul>
+
+      <h5>2. Cómo Usamos tu Información</h5>
+      <ul>
+        <li>Para crear y administrar tu póliza de seguro.</li>
+        <li>Para comunicarnos contigo sobre tus pagos, reclamaciones o consultas.</li>
+        <li>Para procesar reclamaciones y coordinar reparaciones.</li>
+        <li>Nunca venderemos tu información personal a terceros.</li>
+      </ul>
+
+      <h5>3. Seguridad de tus Datos</h5>
+      <p>Utilizamos medidas de seguridad para proteger tu información contra accesos no autorizados. Todas las comunicaciones y datos se manejan con estricta confidencialidad.</p>
+
+      <h5>4. Responsabilidad</h5>
+      <p>WapSeguros actúa como intermediario entre el cliente y los servicios técnicos. Nuestra responsabilidad se limita a la gestión de la cobertura descrita en el plan contratado. No nos hacemos responsables de deudas o disputas derivadas de servicios no cubiertos o de reparaciones realizadas por terceros no autorizados por nosotros.</p>
+
+      <h5>5. Cambios en la Política</h5>
+      <p>Nos reservamos el derecho de modificar esta política. Cualquier cambio será notificado a nuestros clientes activos. El uso continuado del servicio implica la aceptación de los nuevos términos.</p>
+      
+      <p><br><em><strong>Aviso legal:</strong> Este es un resumen informativo. Para obtener detalles completos, por favor, consulta los términos y condiciones al contratar tu plan. Te recomendamos buscar asesoramiento legal independiente si tienes dudas específicas.</em></p>
+    </div>
+  </div>
+
+<script>
+  // Script para el acordeón de FAQ
+  document.querySelectorAll('.faq .q').forEach(q => {
+    q.addEventListener('click', () => {
+      q.classList.toggle('open');
+    });
+  });
+
+  // Script para el cambio de pestañas de precios
+  const pricingToggleButtons = document.querySelectorAll('.pricing-toggle button');
+  const pricePlans = document.querySelectorAll('.price-plan');
+
+  pricingToggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.dataset.target;
+
+      pricingToggleButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      pricePlans.forEach(plan => {
+        if (plan.id === targetId) {
+          plan.classList.add('active');
+        } else {
+          plan.classList.remove('active');
+        }
+      });
+    });
+  });
+
+  // Script para el modal de política de privacidad
+  const privacyModal = document.getElementById('privacy-modal');
+  const privacyLink = document.getElementById('privacy-policy-link');
+
+  function openModal() {
+    privacyModal.style.display = 'flex';
+  }
+
+  function closeModal() {
+    privacyModal.style.display = 'none';
+  }
+
+  privacyLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal();
+  });
+
+  // Cierra el modal si se hace clic fuera del diálogo
+  privacyModal.addEventListener('click', (e) => {
+    if (e.target === privacyModal) {
+      closeModal();
+    }
+  });
+
+</script>
+
 </body>
 </html>
